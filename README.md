@@ -40,7 +40,7 @@ $ php artisan vendor:publish --provider="Osen\Updater\UpdaterServiceProvider"
 ### :information_source: Setting the currently installed version
 
 Before starting an update, make sure to set the version installed correctly.
-You're responsible to set the current version installed, either in the config file or better via the env variable `SELF_UPDATER_VERSION_INSTALLED`.
+You're responsible to set the current version installed, either in the config file or better via the env variable `UPDATER_VERSION_INSTALLED`.
 
 #### `tag`-based updates
 
@@ -82,15 +82,15 @@ Artisan commands can be run before or after the update process and can be config
 
 You need to specify a recipient email address and a recipient name to receive
 update available notifications.
-You can specify these values by adding `SELF_UPDATER_MAILTO_NAME` and
-`SELF_UPDATER_MAILTO_ADDRESS` to your `.env` file.
+You can specify these values by adding `UPDATER_MAILTO_NAME` and
+`UPDATER_MAILTO_ADDRESS` to your `.env` file.
 
 | Config name                                  | Description                       |
 | -------------------------------------------- | --------------------------------- |
-| SELF_UPDATER_MAILTO_NAME                     | Name of email recipient           |
-| SELF_UPDATER_MAILTO_ADDRESS                  | Address of email recipient        |
-| SELF_UPDATER_MAILTO_UPDATE_AVAILABLE_SUBJECT | Subject of update available email |
-| SELF_UPDATER_MAILTO_UPDATE_SUCCEEDED_SUBJECT | Subject of update succeeded email |
+| UPDATER_MAILTO_NAME                     | Name of email recipient           |
+| UPDATER_MAILTO_ADDRESS                  | Address of email recipient        |
+| UPDATER_MAILTO_UPDATE_AVAILABLE_SUBJECT | Subject of update available email |
+| UPDATER_MAILTO_UPDATE_SUCCEEDED_SUBJECT | Subject of update succeeded email |
 
 ### Private repositories
 
@@ -153,8 +153,8 @@ Select the branch that should be used via the `use_branch` setting [inside the c
 'repository_types' => [
     'github' => [
         'type' => 'github',
-        'repository_vendor' => env('SELF_UPDATER_REPO_VENDOR', ''),
-        'repository_name' => env('SELF_UPDATER_REPO_NAME', ''),
+        'repository_vendor' => env('UPDATER_REPO_VENDOR', ''),
+        'repository_name' => env('UPDATER_REPO_NAME', ''),
         // ...
         'use_branch' => 'v2',
    ],
@@ -171,14 +171,14 @@ To run with HTTP archives, use following settings in your `.env` file:
 
 | Config name                      | Value / Description                        |
 | -------------------------------- | ------------------------------------------ |
-| SELF_UPDATER_SOURCE              | `http`                                     |
-| SELF_UPDATER_REPO_URL            | Archive URL, e.g. `http://archive.webapp/` |
-| SELF_UPDATER_PKG_FILENAME_FORMAT | Zip package filename format                |
-| SELF_UPDATER_DOWNLOAD_PATH       | Download path on the webapp host server    |
+| UPDATER_SOURCE              | `http`                                     |
+| UPDATER_REPO_URL            | Archive URL, e.g. `http://archive.webapp/` |
+| UPDATER_PKG_FILENAME_FORMAT | Zip package filename format                |
+| UPDATER_DOWNLOAD_PATH       | Download path on the webapp host server    |
 
 The archive URL should contain nothing more than a simple directory listing with corresponding zip-Archives.
 
-`SELF_UPDATER_PKG_FILENAME_FORMAT` contains the filename format for all webapp update packages. I.e. when the update packages listed on the archive URL contain names like `webapp-v1.2.0.zip`, `webapp-v1.3.5.zip`, ... then the format should be `webapp-v_VERSION_`. The `_VERSION_` part is used as semantic versionioning variable for `MAJOR.MINOR.PATCH` versioning. The zip-extension is automatically added.
+`UPDATER_PKG_FILENAME_FORMAT` contains the filename format for all webapp update packages. I.e. when the update packages listed on the archive URL contain names like `webapp-v1.2.0.zip`, `webapp-v1.3.5.zip`, ... then the format should be `webapp-v_VERSION_`. The `_VERSION_` part is used as semantic versionioning variable for `MAJOR.MINOR.PATCH` versioning. The zip-extension is automatically added.
 
 The target archive files must be zip archives and should contain all files on root level, not within an additional folder named like the archive itself.
 

@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'default' => env('SELF_UPDATER_SOURCE', 'github'),
+    'default' => env('UPDATER_SOURCE', 'github'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'version_installed' => env('SELF_UPDATER_VERSION_INSTALLED', ''),
+    'version_installed' => env('UPDATER_VERSION_INSTALLED', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,19 +39,19 @@ return [
     'repository_types' => [
         'github' => [
             'type' => 'github',
-            'repository_vendor' => env('SELF_UPDATER_REPO_VENDOR', ''),
-            'repository_name' => env('SELF_UPDATER_REPO_NAME', ''),
+            'repository_vendor' => env('UPDATER_REPO_VENDOR', ''),
+            'repository_name' => env('UPDATER_REPO_NAME', ''),
             'repository_url' => '',
-            'download_path' => env('SELF_UPDATER_DOWNLOAD_PATH', '/tmp'),
-            'private_access_token' => env('SELF_UPDATER_GITHUB_PRIVATE_ACCESS_TOKEN', ''),
-            'use_branch' => env('SELF_UPDATER_USE_BRANCH', ''),
+            'download_path' => env('UPDATER_DOWNLOAD_PATH', '/tmp'),
+            'private_access_token' => env('UPDATER_GITHUB_PRIVATE_ACCESS_TOKEN', ''),
+            'use_branch' => env('UPDATER_USE_BRANCH', ''),
         ],
         'http' => [
             'type' => 'http',
-            'repository_url' => env('SELF_UPDATER_REPO_URL', ''),
-            'pkg_filename_format' => env('SELF_UPDATER_PKG_FILENAME_FORMAT', 'v_VERSION_'),
-            'download_path' => env('SELF_UPDATER_DOWNLOAD_PATH', '/tmp'),
-            'private_access_token' => env('SELF_UPDATER_HTTP_PRIVATE_ACCESS_TOKEN', ''),
+            'repository_url' => env('UPDATER_REPO_URL', ''),
+            'pkg_filename_format' => env('UPDATER_PKG_FILENAME_FORMAT', 'v_VERSION_'),
+            'download_path' => env('UPDATER_DOWNLOAD_PATH', '/tmp'),
+            'private_access_token' => env('UPDATER_HTTP_PRIVATE_ACCESS_TOKEN', ''),
         ],
     ],
 
@@ -88,7 +88,7 @@ return [
     |
     */
 
-    'log_events' => env('SELF_UPDATER_LOG_EVENTS', false),
+    'log_events' => env('UPDATER_LOG_EVENTS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -114,13 +114,13 @@ return [
 
         'mail' => [
             'to' => [
-                'address' => env('SELF_UPDATER_MAILTO_ADDRESS', 'notifications@example.com'),
-                'name' => env('SELF_UPDATER_MAILTO_NAME', ''),
+                'address' => env('UPDATER_MAILTO_ADDRESS', 'notifications@example.com'),
+                'name' => env('UPDATER_MAILTO_NAME', ''),
             ],
 
             'from' => [
-                'address' => env('SELF_UPDATER_MAIL_FROM_ADDRESS', 'updater@example.com'),
-                'name' => env('SELF_UPDATER_MAIL_FROM_NAME', 'Update'),
+                'address' => env('UPDATER_MAIL_FROM_ADDRESS', 'updater@example.com'),
+                'name' => env('UPDATER_MAIL_FROM_NAME', 'Update'),
             ],
         ],
     ],
